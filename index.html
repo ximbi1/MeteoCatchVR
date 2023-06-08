@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meteocatch</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+
+        <a-assets>
+            <img src="textures/skyy.jpeg" id="sky">
+            <img src="textures/iuna.bmp" id="meteor">
+            <audio id="explosion" src="explosion.mp3"></audio>
+            <audio id="gameover" src="gameover.mp3"></audio>
+        </a-assets>
+
+        <a-sky src="#sky"></a-sky>
+<!--
+        <a-entity id="menu" visible="false" position="0 0 -2">
+          <a-plane width="2" height="1" color="#333"></a-plane>
+          <a-text value="Cambiar fondo" color="white" position="-0.8 0.2 -0.1" width="2"menu-interaction ></a-text>
+          <a-text value="Cambiar meteoritos" color="white" position="-0.8 -0.2 -0.1" width="2"menu-interaction ></a-text>
+        </a-entity>
+-->
+
+        <a-entity class="orbit" position="0 3 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 360; loop: true; dur: 40000;  easing: linear">
+        </a-entity>
+
+        <a-entity class="orbit" position="0 0 0" rotation="0 0 -45"
+            animation="property: rotation; to: 0 -360 0; loop: true; dur: 30000; easing: linear">
+        </a-entity>
+
+        <a-entity class="orbit" position="0 -3 0" rotation="0 0 -90"
+            animation="property: rotation; to: 0 360 360; loop: true; dur: 20000; easing: linear">
+        </a-entity>
+
+        <a-entity class="orbit" position="0 0 0" rotation="0 0 -120"
+            animation="property: rotation; to: 360 -360 0; loop: true; dur: 50000; easing: linear">
+        </a-entity>
+
+        <a-entity camera look-controls>
+        </a-entity>
+        <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right">
+        </a-entity>
+        <a-entity oculus-touch-controls="hand: left"menu-toggle>
+          <a-text value="0 meteoritos cazados" color="white" position="0 -0.1 -1" width="1" align="center"></a-text>
+          <a-text id="timer" value="Tiempo restante: 60 segundos" color="white" position="0 0.1 -1" width="1" align="center"></a-text>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
